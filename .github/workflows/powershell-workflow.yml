@@ -1,0 +1,19 @@
+name: Ejecutar PowerShell en Self-Hosted Runner
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ejecutar-powershell:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      - name: Ejecutar script PowerShell
+        run: |
+          Write-Output "Iniciando script en self-hosted runner"
+          Get-Process | Select-Object -First 5
+        shell: pwsh
