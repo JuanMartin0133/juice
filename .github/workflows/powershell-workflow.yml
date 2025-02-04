@@ -16,8 +16,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-
-
+      - name: Forzar instalación de dependencias y limpiar caché
+        run: |
+          npm cache clean --force
+          rm -rf node_modules package-lock.json
+          npm install --build-from-source
+          
       - name: Instalar dependencias del proyecto
         run: npm install
 
