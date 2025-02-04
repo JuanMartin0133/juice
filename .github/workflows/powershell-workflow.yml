@@ -12,6 +12,9 @@ jobs:
       - name: Checkout del código
         uses: actions/checkout@v3
 
+      - name: Instalar dependencias del proyecto
+        run: npm install
+
       - name: Instalar Snyk
         run: npm install -g snyk
 
