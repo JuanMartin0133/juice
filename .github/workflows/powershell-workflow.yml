@@ -10,7 +10,13 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Checkout del código
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3ç
+  
+      - name: Instalar Node.js 18 LTS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
 
       - name: Instalar dependencias del proyecto
         run: npm install
