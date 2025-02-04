@@ -30,7 +30,7 @@ jobs:
         run: |
           Write-Output "Iniciando script en self-hosted runner"
           Get-Process | Select-Object -First 5
-        shell: bash
+        shell: powershell
 
       - name: Ejecutar Snyk Test
         run: snyk test
