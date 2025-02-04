@@ -19,8 +19,10 @@ jobs:
       - name: Forzar instalación de dependencias y limpiar caché
         run: |
           npm cache clean --force
-          rm -rf node_modules package-lock.json
+          Remove-Item -Recurse -Force node_modules, package-lock.json
           npm install --build-from-source
+        shell: powershell
+
           
       - name: Instalar dependencias del proyecto
         run: npm install
