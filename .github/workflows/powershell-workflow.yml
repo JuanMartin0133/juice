@@ -1,4 +1,4 @@
-name: Ejecutar PowerShell en Self-Hosted Runner
+name: Ejecutar PowerShell en Self-Hosted Runner con Snyk
 
 on:
   push:
@@ -12,8 +12,17 @@ jobs:
       - name: Checkout del código
         uses: actions/checkout@v3
 
+      - name: Instalar Snyk
+        run: npm install -g snyk
+
+      - name: Autenticación con Snyk
+        run: snyk auth ${{ secrets.SNYK_TOKEN }}
+
       - name: Ejecutar script PowerShell
         run: |
           Write-Output "Iniciando script en self-hosted runner"
           Get-Process | Select-Object -First 5
         shell: pwsh
+
+      - name: Ejecutar Snyk Test
+        run: snyk test
