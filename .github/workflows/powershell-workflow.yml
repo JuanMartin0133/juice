@@ -16,14 +16,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - name: Forzar instalación de dependencias y limpiar caché
-        run: |
-          npm cache clean --force
-          Remove-Item -Recurse -Force node_modules, package-lock.json
-          npm install --build-from-source
-        shell: powershell
-
-          
+ 
       - name: Instalar dependencias del proyecto
         run: npm install
 
@@ -37,7 +30,7 @@ jobs:
         run: |
           Write-Output "Iniciando script en self-hosted runner"
           Get-Process | Select-Object -First 5
-        shell: powershell
+        shell: bash
 
       - name: Ejecutar Snyk Test
         run: snyk test
